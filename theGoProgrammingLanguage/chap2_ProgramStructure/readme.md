@@ -54,6 +54,9 @@ var x, y = true, 2.3 // bool, float64
 ### 2.3.2 Pointers 
 - pointer evaluate to true if and only if the addresses are the same. 
 
+- pointer evaluate to fasle is the variable is not set. 
+
+- Go has no pointer arithmetric 
 
 ### 2.3.3 The new Function
 
