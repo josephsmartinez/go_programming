@@ -1,5 +1,8 @@
 # Data Structures golang
 
+## Sections
+1.
+
 ## Arrays vs Linked List  
 
 | Action        | Array   | Linked  |
@@ -11,5 +14,5 @@
 | Delete        | O(n)    |  O(n)   |
 
 ## Resources
-
+[Data Structure and Algorithms](http://www.golangprograms.com/data-structure-and-algorithms.html)
 ["list" package](https://golang.org/pkg/container/list/)
