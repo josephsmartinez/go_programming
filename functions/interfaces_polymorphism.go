@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// struct data
 type person struct {
 	first string
 	last  string
@@ -14,6 +15,11 @@ type secretAgent struct {
 	ltk bool
 }
 
+type secretary struct {
+	person
+}
+
+// struct methods
 func (s secretAgent) speak() {
 	fmt.Println("I am", s.first, s.last, " - the secretAgent speak")
 }
@@ -22,8 +28,24 @@ func (p person) speak() {
 	fmt.Println("I am", p.first, p.last, " - the person speak")
 }
 
+// interfaces
 type human interface {
 	speak()
+}
+
+type employee interface {
+	payday()
+}
+
+// interface methods
+func payout(e employee) int {
+	 switch amount := e.(type){
+	 case secretAgent:
+		 return 500000
+	case  secretary:
+		return 80000
+
+	}
 }
 
 func bar(h human) {
