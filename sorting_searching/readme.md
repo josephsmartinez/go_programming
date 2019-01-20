@@ -1,7 +1,7 @@
 # Data Structures golang
 
 ## Sections
-1.
+
 
 ## Arrays vs Linked List  
 
