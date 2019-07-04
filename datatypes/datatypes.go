@@ -6,10 +6,27 @@ import (
 	"math/cmplx"
 )
 
+// type constant
+const Truth bool = true
+
+// untype constant
+const x = 42
+
+/*
+Iota
+Within a constant declaration, the predeclared identifier iota represents successive untyped integer constants. It is reset to 0 whenever the reserved word const appears in the source. It can be used to construct a set of related constants
+*/
+const (
+	c0 = iota
+	c1 = iota
+	c2 = iota
+)
+
 var (
 
 	// boolean
-	tobe bool = true
+	tobe    bool = true
+	notTobe      = false
 
 	// integers unsigned
 	maxint8  uint8  = 1<<8 - 1
@@ -65,9 +82,6 @@ var (
 		2: "Jen",
 		3: "Abi",
 	}
-
-	// constant
-
 )
 
 //  two dimensional slices
