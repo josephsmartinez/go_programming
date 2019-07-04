@@ -1,6 +1,7 @@
 # Simple programs that use common packages
 
 ## Variable, Values, and Types
+
 - Packages
 - Short declaration operator
 - The var keyword
