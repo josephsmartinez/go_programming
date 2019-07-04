@@ -11,10 +11,9 @@ func main() {
 		`no_dr`:           []string{`Being evil`, `Ice cream`, `Sunsets`},
 	}
 
-	// fmt.Println(m)
-
+	// Sets the element keys with the values
 	m[`fleming_ian`] = []string{`steaks`, `cigars`, `espionage`}
-  m[`joe`]= []string{`hello`,`as`,`as`}
+	m[`joe`] = []string{`hello`, `as`, `as`}
 
 	for k, v := range m {
 		fmt.Println("This is the record for", k)
