@@ -2,13 +2,15 @@ package main
 
 import "fmt"
 
+// Person : Capital names are avalible outside the package level
 type Person struct {
 	firstName string
 	lastName  string
 	age       int
 }
 
-type Employee struct {
+// Lower case structs are for this package only
+type employee struct {
 	// The type does not need a field name
 	Person
 	jobTitle    string
@@ -44,7 +46,7 @@ func main() {
 	fmt.Println(person2)
 
 	// Is-A Relationship
-	employee1 := Employee{
+	employee1 := employee{
 		// Initializing does require a field name
 		Person: Person{
 			firstName: "Jeff",

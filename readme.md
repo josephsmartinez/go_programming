@@ -5,7 +5,7 @@ STATIC Programming Language
 Go is an open source programming language that makes it easy to build simple,
 reliable, and efficient software.
 
-![Gopher image](images/fiveyears.jpg)
+![Gopher image](.img/fiveyears.jpg)
 *Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
 
 ## Credentials of Go
