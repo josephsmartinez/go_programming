@@ -14,8 +14,11 @@ func main() {
 	fmt.Println("CPUs\t\t", runtime.NumCPU())
 	fmt.Println("Goroutines\t", runtime.NumGoroutine())
 
-	wg.Add(1)
+	wg.Add(4)
 	go foo()
+	go foo()
+	go bar()
+	foo()
 	bar()
 
 	fmt.Println("CPUs\t\t", runtime.NumCPU())
@@ -34,4 +37,5 @@ func bar() {
 	for i := 0; i < 10; i++ {
 		fmt.Println("bar:", i)
 	}
+	wg.Done()
 }
