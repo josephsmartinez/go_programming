@@ -7,6 +7,7 @@ import (
 	"log"
 )
 
+// File file data
 type File struct {
 	FileName string
 	FileSize string

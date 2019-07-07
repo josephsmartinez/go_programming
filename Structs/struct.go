@@ -34,6 +34,10 @@ type Car struct {
 
 func main() {
 
+	// Empty initialization
+	person := new(Person)
+	fmt.Println(person)
+
 	// Creating a struture using field names
 	person1 := Person{
 		firstName: "James",
