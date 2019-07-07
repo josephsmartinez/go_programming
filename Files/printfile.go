@@ -6,26 +6,26 @@ import (
 	"os"
 )
 
-fun main(){
-	
-// Create a file and use bufio.NewWriter.
-f, _ := os.Create("file.txt")
-w := bufio.NewWriter(f)
+func main() {
 
-// Use Fprint to write things to the file.
-// ... No trailing newline is inserted.
-fmt.Fprint(w, "Hello")
-fmt.Fprint(w, 123)
-fmt.Fprint(w, "...")
+	// Create a file and use bufio.NewWriter.
+	f, _ := os.Create("file.txt")
+	w := bufio.NewWriter(f)
 
-// Use Fprintf to write formatted data to the file.
-value1 := "cat"
-value2 := 900
-fmt.Fprintf(w, "%v %d...", value1, value2)
+	// Use Fprint to write things to the file.
+	// ... No trailing newline is inserted.
+	fmt.Fprint(w, "Hello")
+	fmt.Fprint(w, 123)
+	fmt.Fprint(w, "...")
 
-fmt.Fprintln(w, "DONE...")
+	// Use Fprintf to write formatted data to the file.
+	value1 := "cat"
+	value2 := 900
+	fmt.Fprintf(w, "%v %d...", value1, value2)
 
-// Done.
-w.Flush()
+	fmt.Fprintln(w, "DONE...")
+
+	// Done.
+	w.Flush()
 
 }
