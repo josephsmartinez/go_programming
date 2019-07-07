@@ -43,6 +43,11 @@ for _, i := range matrix {
 	fmt.Println(x[1:])
 	fmt.Println(x[1:3])
 
+	// Declaring Empty Slices
+	var t []string  // empty slice
+	t := []string{} // nil slice
+
+
 // Slice methods
 // len()
 // cap()
