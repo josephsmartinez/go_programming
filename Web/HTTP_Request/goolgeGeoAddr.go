@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -8,6 +9,10 @@ import (
 	"net/http"
 	"os"
 	"strings"
+)
+
+const(
+	BUFFLIMIT int (1024 * 5)
 )
 
 // APIKey JSON for Google API
@@ -58,7 +63,7 @@ func (a Address) addressFormatter(addr *Address, apiKey string) string {
 }
 
 // GeocodingRequest HTTP request function
-func GeocodingRequest(url string) {
+func GeocodingRequest(url string) *[]byte {
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -71,12 +76,12 @@ func GeocodingRequest(url string) {
 		log.Fatalln(err)
 		os.Exit(2)
 	}
-
-	log.Println(string(body))
+	//log.Println(string(body))
+	return &body
 }
 
 // ReverseGeocodingRequest HTTP request function
-func ReverseGeocodingRequest(url string) {
+func ReverseGeocodingRequest(url string) *[]byte {
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -89,24 +94,55 @@ func ReverseGeocodingRequest(url string) {
 		log.Fatalln(err)
 		os.Exit(2)
 	}
-
-	log.Println(string(body))
+	//log.Println(string(body))
+	return &body
 }
 
-func main() {
+// Read JSON
+func readJSONFile(keyFile string) *string {
 
-	apikeyJSONFile, err := os.Open("apikey.json")
+	apikeyJSONFile, err := os.Open(keyFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer apikeyJSONFile.Close()
-
 	byteValue, _ := ioutil.ReadAll(apikeyJSONFile)
 	apikey := new(APIKey)
 	err = json.Unmarshal(byteValue, &apikey)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	return &apikey.Key
+
+}
+
+func unmarshalJSON() {
+
+}
+
+func printToFile(data *string) (bool, int) {
+	var dataWritten bool
+	f, err := os.Create("locationdata.json")
+	if err != nil {
+		dataWritten = false
+		log.Fatal(err)
+	}
+	buffSize := (BUFFLIMIT)
+	w := bufio.NewWriterSize(f, buffSize)
+	bytesWritten, err := w.WriteString(*data)
+	if err != nil {
+		dataWritten = false
+		log.Fatal(err)
+	}
+	dataWritten = true
+	w.Flush()
+	return dataWritten, bytesWritten
+}
+
+func main() {
+
+	apikey := readJSONFile("apikey.json")
 
 	address := Address{
 		StreetNumber: "1600",
@@ -115,15 +151,27 @@ func main() {
 		State:        "CA",
 	}
 
-	formatedURL := address.addressFormatter(&address, apikey.Key)
-	fmt.Println("---------ADDRESS LOOKUP----------------")
-	GeocodingRequest(formatedURL)
-
 	geoLocation := GeoLocation{
 		Latitude:  "40.714224",
 		Longitude: "-73.961452",
 	}
-	formatedURL = geoLocation.addressFormatter(&geoLocation, apikey.Key)
+
+	formatedURL := address.addressFormatter(&address, *apikey)
+	fmt.Println("---------ADDRESS LOOKUP----------------")
+	GeocodingRequest(formatedURL)
+
+	formatedURL = geoLocation.addressFormatter(&geoLocation, *apikey)
 	fmt.Println("---------REVERSE LOOKUP----------------")
-	ReverseGeocodingRequest(formatedURL)
+	reverBytes := ReverseGeocodingRequest(formatedURL)
+	//fmt.Println(string(*reverBytes))
+
+	stringData := string(*reverBytes)
+	//fmt.Println(stringData)
+	printToFile(&stringData)
+
+	// var results map[string]interface{}
+	// json.Unmarshal([]byte(*byteStr), &results)
+	// loc := results["results"].(map[string]interface{})
+	//unmarshalJSON(results)
+
 }

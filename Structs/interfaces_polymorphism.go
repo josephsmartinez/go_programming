@@ -4,21 +4,21 @@ import (
 	"fmt"
 )
 
-type person struct {
+type Person struct {
 	first string
 	last  string
 }
 
-type secretAgent struct {
-	person
+type SecretAgent struct {
+	Person
 	ltk bool
 }
 
-func (s secretAgent) speak() {
+func (s SecretAgent) speak() {
 	fmt.Println("I am", s.first, s.last, " - the secretAgent speak")
 }
 
-func (p person) speak() {
+func (p Person) speak() {
 	fmt.Println("I am", p.first, p.last, " - the person speak")
 }
 
@@ -28,10 +28,10 @@ type human interface {
 
 func randomFunction(h human) {
 	switch h.(type) {
-	case person:
-		fmt.Println("I was passed into randomFunction", h.(person).first)
-	case secretAgent:
-		fmt.Println("I was passed into randomFunction", h.(secretAgent).first)
+	case Person:
+		fmt.Println("I was passed into randomFunction", h.(Person).first)
+	case SecretAgent:
+		fmt.Println("I was passed into randomFunction", h.(SecretAgent).first)
 	}
 	fmt.Println("I was passed into randomFunction", h)
 }
@@ -39,27 +39,28 @@ func randomFunction(h human) {
 type hotdog int
 
 func main() {
-	sa1 := secretAgent{
-		person: person{
+	sa1 := SecretAgent{
+		Person: Person{
 			"James",
 			"Bond",
 		},
 		ltk: true,
 	}
 
-	sa2 := secretAgent{
-		person: person{
+	sa2 := SecretAgent{
+		Person: Person{
 			"Miss",
 			"Moneypenny",
 		},
 		ltk: true,
 	}
 
-	p1 := person{
+	p1 := Person{
 		first: "Dr.",
 		last:  "Yes",
 	}
 
+	fmt.Println(sa1)
 	fmt.Println(sa1)
 	sa1.speak()
 	sa2.speak()
