@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+var userName = "joseph"
+
 func main() {
 	conn, err := net.Dial("tcp", "127.0.0.1:3000")
 	if err != nil {
@@ -22,24 +24,28 @@ func main() {
 	// if err != nil {
 	// 	log.Fatalln(err)
 	// }
+	// fmt.Println(string(bs))
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Printf("Connection Succe")
-
+	fmt.Printf("Connection Successful...\n")
 	for {
-
+		// Send Request
+		fmt.Print(userName + "client# ")
 		userCommands, _ := reader.ReadString('\n')
 		userCommands = strings.Trim(userCommands, "\n")
 		commandLen := len(strings.Split(userCommands, " "))
 		fmt.Fprintln(conn, userCommands)
 
-		if commandLen == 1 && strings.ToLower(userCommands) == "q" {
+		// Get Request
+		//severReply, _ := bufio.NewReader(conn).ReadString('')
+		severReply, _ := bufio.NewReader(conn).ReadString('\n')
+		fmt.Print(severReply)
+
+		// User can stop program from client side
+		if commandLen == 1 && strings.ToLower(userCommands) == "exit" {
 			log.Println("Client Stopped")
 			os.Exit(0)
 		}
 	}
-
-	fmt.Fprintln(conn, "I dialed you.")
-	//fmt.Println(string(bs))
 
 }

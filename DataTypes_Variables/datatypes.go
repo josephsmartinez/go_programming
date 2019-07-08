@@ -89,6 +89,9 @@ type matrixSlice [5][5]int
 
 func main() {
 
+	// String literals
+	sentence := `This is a string literal and will print as is with new line. \n will not work`
+
 	// prints max values for unsigned ints
 	fmt.Print("Unsigned Int-------------\n")
 	fmt.Printf("%T %v\n", maxint8, maxint8)
