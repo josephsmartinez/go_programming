@@ -22,6 +22,7 @@ func (p Person) speak() {
 	fmt.Println("I am", p.first, p.last, " - the person speak")
 }
 
+// Any type which defines all the methods of an interface is said to implicitly implement that interface.
 type human interface {
 	speak()
 }

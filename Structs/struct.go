@@ -19,13 +19,13 @@ type employee struct {
 }
 
 // NOTE: namespace with field "size"
-type Tires struct {
+type tires struct {
 	size int
 	make string
 }
 
-type Car struct {
-	Tires Tires
+type car struct {
+	tires tires
 	make  string
 	model string
 	year  int
@@ -68,8 +68,8 @@ func main() {
 	fmt.Printf("First Name:%v\nLast Name: %v\nAge: %v\nJob Title: %v\nCompany: %v\nSalary: %v\n", employee1.firstName, employee1.lastName, employee1.age, employee1.jobTitle, employee1.companyName, employee1.salary)
 
 	// Has-A Relationship
-	car1 := Car{
-		Tires: Tires{
+	car1 := car{
+		tires: tires{
 			size: 10,
 			make: "goodyear",
 		},
@@ -79,7 +79,7 @@ func main() {
 		miles: 18000,
 	}
 
-	fmt.Printf("Make: %v\nModel: %v\nYear: %v\nMiles: %v\nTiress: %v %v\n", car1.make, car1.model, car1.year, car1.miles, car1.Tires.make, car1.Tires.size)
+	fmt.Printf("Make: %v\nModel: %v\nYear: %v\nMiles: %v\nTiress: %v %v\n", car1.make, car1.model, car1.year, car1.miles, car1.tires.make, car1.tires.size)
 
 	// Anonymous Structures
 	iphone := struct {
@@ -89,7 +89,5 @@ func main() {
 		model: "5s",
 		price: 100,
 	}
-
 	fmt.Printf("%T\n", iphone)
-
 }
