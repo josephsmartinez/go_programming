@@ -19,7 +19,8 @@ reliable, and efficient software.
 
 [Go Printf](https://godoc.org/fmt#Printf)  
 [Language](https://golang.org/ref/spec)  
-[Go Docs](https://golang.org/pkg/)
+[Go Docs](https://golang.org/pkg/)  
+[Workspaces](https://golang.org/doc/code.html#Workspaces)  
 
 ### Commands for go
 
