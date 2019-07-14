@@ -6,10 +6,11 @@ import (
 	"math/cmplx"
 )
 
-// type constant
+// Truth - Capitial variable can be accessed outside of the package
+// type constant - forced to obey the strict rules and prevent combining values
 const Truth bool = true
 
-// untype constant
+// untype constant - can be implicitly converted by the conpiler
 const x = 42
 
 /*
@@ -90,7 +91,7 @@ type matrixSlice [5][5]int
 func main() {
 
 	// String literals
-	sentence := `This is a string literal and will print as is with new line. \n will not work`
+	//sentence := `This is a string literal and will print as is with new line. \n will not work`
 
 	// prints max values for unsigned ints
 	fmt.Print("Unsigned Int-------------\n")

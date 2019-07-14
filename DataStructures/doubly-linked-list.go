@@ -13,6 +13,7 @@ func main() {
 	l.InsertBefore(3, e4)
 	l.InsertAfter(2, e1)
 
+	// Looping through the linked list
 	for e := l.Front(); e != nil; e = e.Next() {
 		fmt.Println(e.Value)
 	}
