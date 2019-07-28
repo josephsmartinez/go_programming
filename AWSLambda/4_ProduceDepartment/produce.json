@@ -1,0 +1,31 @@
+{
+    "department": "produce",
+    "categories": [
+      "fruit",
+      "vegetables"
+    ],
+    "bins": [
+      {
+        "category": "fruit",
+        "type": "apples",
+        "price": 1.99,
+        "unit": "pound",
+        "quantity": 232
+      },
+      {
+        "category": "fruit",
+        "type": "bananas",
+        "price": 0.19,
+        "unit": "each",
+        "quantity": 112
+      },
+      {
+        "category": "vegetables",
+        "type": "carrots",
+        "price": 1.29,
+        "unit": "bag",
+        "quantity": 57
+      }
+    ]
+  }
+  

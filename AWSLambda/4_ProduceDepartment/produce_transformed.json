@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GroceryStoreInputModel",
+    "type": "object",
+    "properties": {
+      "department": { "type": "string" },
+      "categories": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "bins": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "category": { "type": "string" },
+            "type": { "type": "string" },
+            "price": { "type": "number" },
+            "unit": { "type": "string" },
+            "quantity": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
